@@ -14,6 +14,8 @@ public:
 private:
     FloodIt& m_model;
     View& m_view;
+
+    void mainGameFlow();
 };
 
 #endif // CONTROLLER_H

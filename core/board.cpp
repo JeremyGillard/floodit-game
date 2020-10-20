@@ -4,5 +4,5 @@
 
 Board::Board()
 {
-    std::cout << "Board constructed." << std::endl;
+    std::cout << "Pending board construction..." << std::endl;
 }

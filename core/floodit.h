@@ -6,6 +6,8 @@
 class FloodIt {
 public:
     FloodIt();
+    void initBoard(unsigned boardHeight, unsigned boardWidth);
+    void start(unsigned difficultyLevel);
 };
 
 #endif // FLOODIT_H
