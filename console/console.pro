@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        controller.cpp \
+        main.cpp \
+        view.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../core/release/ -lcore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../core/debug/ -lcore
@@ -20,5 +22,7 @@ else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/
 else:unix: PRE_TARGETDEPS += $$OUT_PWD/../core/libcore.a
 
 HEADERS += \
+    controller.h \
     dependencies/keyboard.hpp \
-    dependencies/stringConvert.hpp
+    dependencies/stringConvert.hpp \
+    view.h
