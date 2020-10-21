@@ -16,15 +16,17 @@ void Controller::startGame()
     }
     boardWidth = m_view.sizeBoardQuestion("width");
     m_model.initBoard(boardHeight, boardWidth);
-    m_model.start(m_view.difficultyQuestion());
+    m_view.displayBoard(); // A RETIRER *********
+    m_model.setDifficulty(m_view.difficultyQuestion());
+    m_view.displayBoard(); // A RETIRER *********
     mainGameFlow();
 }
 
 void Controller::mainGameFlow()
 {
-    //    while (!m_model.isOver()) {
-    //        unsigned selectedColor = m_view.colorQuestion();
-    //        m_model.pickColor(selectedColor);
-    //    }
-    //    m_view.endMessage(m_model.getNumberOfStep());
+    while (!m_model.isOver()) {
+        unsigned selectedColor = m_view.colorQuestion();
+        m_model.pickColor(selectedColor);
+    }
+    m_view.endMessage(); // A voir si nécessaire
 }

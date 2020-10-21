@@ -4,17 +4,52 @@
 
 FloodIt::FloodIt()
 {
-    std::cout << "Pending model construction..." << std::endl;
-    Board board;
 }
 
 void FloodIt::initBoard(unsigned boardHeight, unsigned boardWidth)
 {
-    std::cout << "Board selected height : " << boardHeight << std::endl;
-    std::cout << "Board selected width : " << boardWidth << std::endl;
+    m_numberOfMoves = 0;
+    m_board = std::make_unique<Board>(boardHeight, boardWidth);
 }
 
-void FloodIt::start(unsigned difficultyLevel)
+void FloodIt::setDifficulty(unsigned difficultyLevel)
 {
-    std::cout << "Selected difficulty : " << difficultyLevel << std::endl;
+    m_board->setDifficulty(difficultyLevel);
+}
+
+bool FloodIt::isOver()
+{
+    Board board(m_board->height(), m_board->width(), m_board->getCurrentColor());
+    return *m_board == board;
+}
+
+void FloodIt::pickColor(unsigned color)
+{
+    if (m_board->pickColor(color))
+        m_numberOfMoves++;
+}
+
+unsigned FloodIt::getColorAt(unsigned row, unsigned col)
+{
+    return m_board->getColorAt(row, col);
+}
+
+unsigned FloodIt::getNumberOfMoves()
+{
+    return m_numberOfMoves;
+}
+
+unsigned FloodIt::chosenHeight()
+{
+    return m_board->height();
+}
+
+unsigned FloodIt::chosenWidth()
+{
+    return m_board->width();
+}
+
+unsigned FloodIt::chosenDifficulty()
+{
+    return m_board->difficultyLevel();
 }
