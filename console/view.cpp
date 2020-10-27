@@ -88,10 +88,13 @@ void View::displayBoard() const
         std::cout << std::endl;
     }
     std::cout << std::endl;
+    std::cout << m_model.getNumberOfMoves() << " moves" << std::endl;
+    std::cout << std::endl;
 }
 
 void View::endMessage() const
 {
+    displayBoard();
     std::cout << "\nCongratulation!\n"
               << std::endl;
 }

@@ -9,6 +9,8 @@ FloodIt::FloodIt()
 void FloodIt::initBoard(unsigned boardHeight, unsigned boardWidth)
 {
     m_numberOfMoves = 0;
+    if (boardHeight == 0)
+        boardHeight = boardWidth;
     m_board = std::make_unique<Board>(boardHeight, boardWidth);
 }
 

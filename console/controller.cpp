@@ -18,13 +18,13 @@ void Controller::startGame()
     m_model.initBoard(boardHeight, boardWidth);
     m_view.displayBoard(); // A RETIRER *********
     m_model.setDifficulty(m_view.difficultyQuestion());
-    m_view.displayBoard(); // A RETIRER *********
     mainGameFlow();
 }
 
 void Controller::mainGameFlow()
 {
     while (!m_model.isOver()) {
+        m_view.displayBoard();
         unsigned selectedColor = m_view.colorQuestion();
         m_model.pickColor(selectedColor);
     }

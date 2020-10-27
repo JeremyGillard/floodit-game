@@ -25,7 +25,7 @@ private:
     unsigned m_viewHeight;
     unsigned m_viewWidth;
 
-    void getViewDimensions();
+    void getViewDimensions(); // Pour éventuellement avoir une plus belle représentation console
 };
 
 #endif // VIEW_H
