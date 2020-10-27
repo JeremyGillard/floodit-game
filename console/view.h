@@ -6,12 +6,14 @@
 #include <windows.h>
 
 #include "dependencies/keyboard.hpp"
+#include "dependencies/observer/observer.h"
 #include "dependencies/stringConvert.hpp"
 #include "floodit.h"
 
-class View {
+class View : public nvs::Observer {
 public:
     View(FloodIt& model);
+    ~View();
     void welcomeMessage();
     bool squareOrRectangularBoardQuestion();
     unsigned sizeBoardQuestion(const std::string& concernedDimension);
@@ -19,6 +21,7 @@ public:
     unsigned colorQuestion();
     void displayBoard() const;
     void endMessage() const;
+    virtual void update(const nvs::Subject* subject) override;
 
 private:
     FloodIt& m_model;

@@ -17,6 +17,7 @@ void FloodIt::initBoard(unsigned boardHeight, unsigned boardWidth)
 void FloodIt::setDifficulty(unsigned difficultyLevel)
 {
     m_board->setDifficulty(difficultyLevel);
+    notifyObservers();
 }
 
 bool FloodIt::isOver()
@@ -27,8 +28,10 @@ bool FloodIt::isOver()
 
 void FloodIt::pickColor(unsigned color)
 {
-    if (m_board->pickColor(color))
+    if (m_board->pickColor(color)) {
         m_numberOfMoves++;
+        notifyObservers();
+    }
 }
 
 unsigned FloodIt::getColorAt(unsigned row, unsigned col)

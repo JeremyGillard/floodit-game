@@ -4,8 +4,9 @@
 #include <memory>
 
 #include "board.h"
+#include "dependencies/observer/subject.h"
 
-class FloodIt {
+class FloodIt : public nvs::Subject {
 public:
     FloodIt();
     void initBoard(unsigned boardHeight, unsigned boardWidth);

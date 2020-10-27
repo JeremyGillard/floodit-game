@@ -3,7 +3,13 @@
 View::View(FloodIt& model)
     : m_model(model)
 {
+    m_model.registerObserver(this);
     getViewDimensions();
+}
+
+View::~View()
+{
+    m_model.unregisterObserver(this);
 }
 
 void View::welcomeMessage()
@@ -30,17 +36,17 @@ bool View::squareOrRectangularBoardQuestion()
 unsigned View::sizeBoardQuestion(const std::string& concernedDimension)
 {
     int sizeBoard { -1 };
-    const std::string message { "Sorry, you have to give a number between 6 and 26, please try again" };
+    const std::string message { "Sorry, you have to give a number between 5 and 20, please try again" };
     do {
         try {
-            std::cout << "What size do you want for the " << concernedDimension << " of your board ? : ";
+            std::cout << "What size do you want for the " << concernedDimension << " of your board (5 - 20) ? : ";
             sizeBoard = nvs::lineFromKbd<int>();
         } catch (const std::exception& e) {
             std::cout << message << std::endl;
         }
-        if (sizeBoard < 6 || sizeBoard > 26)
+        if (sizeBoard < 5 || sizeBoard > 20)
             std::cout << message << std::endl;
-    } while (sizeBoard < 6 || sizeBoard > 26);
+    } while (sizeBoard < 5 || sizeBoard > 20);
     return unsigned(sizeBoard);
 }
 
@@ -97,6 +103,15 @@ void View::endMessage() const
     displayBoard();
     std::cout << "\nCongratulation!\n"
               << std::endl;
+}
+
+void View::update(const nvs::Subject* subject)
+{
+    const nvs::Subject* _subject = &m_model;
+    if (subject != _subject)
+        return;
+
+    displayBoard();
 }
 
 void View::getViewDimensions()

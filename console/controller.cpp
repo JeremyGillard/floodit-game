@@ -16,7 +16,7 @@ void Controller::startGame()
     }
     boardWidth = m_view.sizeBoardQuestion("width");
     m_model.initBoard(boardHeight, boardWidth);
-    m_view.displayBoard(); // A RETIRER *********
+    // m_view.displayBoard(); // A RETIRER *********
     m_model.setDifficulty(m_view.difficultyQuestion());
     mainGameFlow();
 }
@@ -24,7 +24,6 @@ void Controller::startGame()
 void Controller::mainGameFlow()
 {
     while (!m_model.isOver()) {
-        m_view.displayBoard();
         unsigned selectedColor = m_view.colorQuestion();
         m_model.pickColor(selectedColor);
     }
