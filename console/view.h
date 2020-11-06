@@ -21,6 +21,9 @@ public:
     unsigned colorQuestion();
     void displayBoard() const;
     void endMessage() const;
+    bool registerScoreQuestion() const;
+    std::string pseudoQuestion() const;
+    void showScorePanel(const std::string& pseudo) const;
     virtual void update(const nvs::Subject* subject) override;
 
 private:

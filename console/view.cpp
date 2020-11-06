@@ -100,9 +100,43 @@ void View::displayBoard() const
 
 void View::endMessage() const
 {
-    displayBoard();
     std::cout << "\nCongratulation!\n"
               << std::endl;
+    std::cout << "You finished this game in " << m_model.getNumberOfMoves() << " moves [Enter]" << std::endl;
+}
+
+bool View::registerScoreQuestion() const
+{
+    std::cin.ignore();
+    std::cout << "Would you like to save your score in the score panel? (y/n) : ";
+    char response;
+    std::cin >> response;
+    while (std::tolower(response) != 'y' && std::tolower(response) != 'n') {
+        std::cout << "This answear is not correct. Please try again (Y/y or N/n) : ";
+        std::cin >> response;
+    }
+    std::cin.ignore();
+    return response == 'y';
+}
+
+std::string View::pseudoQuestion() const
+{
+    std::string pseudo;
+    std::cout << "Pseudo: ";
+    std::cin >> pseudo;
+    return pseudo;
+}
+
+void View::showScorePanel(const std::string& pseudo) const
+{
+    std::cout << "You have place " << m_model.getPlayersRanking(pseudo) << " in the scoreboard" << std::endl;
+    std::string header = "Score Panel (" + std::to_string(m_model.chosenWidth()) + " Width, " + std::to_string(m_model.chosenHeight()) + " Height, " + std::to_string(m_model.chosenDifficulty()) + " Difficulty)";
+    std::cout << "\n"
+              << header << "\n"
+              << std::endl;
+    for (auto score : m_model.getScores()) {
+        std::cout << std::setw(3) << score.first << std::setw(10) << score.second << std::endl;
+    }
 }
 
 void View::update(const nvs::Subject* subject)

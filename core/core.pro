@@ -21,12 +21,14 @@ HEADERS += \
     board.h \
     dependencies/observer/observer.h \
     dependencies/observer/subject.h \
-    floodit.h
+    floodit.h \
+    records.h
 
 SOURCES += \
     board.cpp \
     dependencies/observer/subject.cpp \
-    floodit.cpp
+    floodit.cpp \
+    records.cpp
 
 DISTFILES += \
     dependencies/observer/doc/cppreferencetagfile/cppreference-doxygen-web.tag.xml \

@@ -1,7 +1,5 @@
 #include "floodit.h"
 
-#include <iostream>
-
 FloodIt::FloodIt()
 {
 }
@@ -20,7 +18,7 @@ void FloodIt::setDifficulty(unsigned difficultyLevel)
     notifyObservers();
 }
 
-bool FloodIt::isOver()
+bool FloodIt::isOver() const
 {
     Board board(m_board->height(), m_board->width(), m_board->getCurrentColor());
     return *m_board == board;
@@ -57,4 +55,29 @@ unsigned FloodIt::chosenWidth()
 unsigned FloodIt::chosenDifficulty()
 {
     return m_board->difficultyLevel();
+}
+
+void FloodIt::newScore(const std::string& pseudo)
+{
+    if (!isOver()) {
+        throw std::logic_error("The player must have finished the game in order to register.");
+    } else {
+        std::string recordFileName = std::to_string(chosenHeight()) + "H_" + std::to_string(chosenWidth()) + "W_" + std::to_string(chosenDifficulty()) + "D";
+        m_records = std::make_unique<Records>(recordFileName + ".csv");
+        m_records->newRecord(pseudo, getNumberOfMoves());
+    }
+}
+
+std::map<unsigned, std::string> FloodIt::getScores() const
+{
+    if (!isOver()) {
+        throw std::logic_error("The player must have finished the game in order to access scores.");
+    } else {
+        return m_records->getScores();
+    }
+}
+
+unsigned FloodIt::getPlayersRanking(const std::string& name) const
+{
+    return m_records->getPlayersRanking(name);
 }

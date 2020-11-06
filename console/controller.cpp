@@ -16,7 +16,6 @@ void Controller::startGame()
     }
     boardWidth = m_view.sizeBoardQuestion("width");
     m_model.initBoard(boardHeight, boardWidth);
-    // m_view.displayBoard(); // A RETIRER *********
     m_model.setDifficulty(m_view.difficultyQuestion());
     mainGameFlow();
 }
@@ -27,5 +26,10 @@ void Controller::mainGameFlow()
         unsigned selectedColor = m_view.colorQuestion();
         m_model.pickColor(selectedColor);
     }
-    m_view.endMessage(); // A voir si nécessaire
+    m_view.endMessage();
+    if (m_view.registerScoreQuestion()) {
+        const std::string pseudo = m_view.pseudoQuestion();
+        m_model.newScore(pseudo);
+        m_view.showScorePanel(pseudo);
+    }
 }
