@@ -28,10 +28,6 @@ public:
 
 private:
     FloodIt& m_model;
-    unsigned m_viewHeight;
-    unsigned m_viewWidth;
-
-    void getViewDimensions(); // Pour éventuellement avoir une plus belle représentation console
 };
 
 #endif // VIEW_H

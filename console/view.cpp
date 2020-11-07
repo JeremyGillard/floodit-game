@@ -4,7 +4,6 @@ View::View(FloodIt& model)
     : m_model(model)
 {
     m_model.registerObserver(this);
-    getViewDimensions();
 }
 
 View::~View()
@@ -146,12 +145,4 @@ void View::update(const nvs::Subject* subject)
         return;
 
     displayBoard();
-}
-
-void View::getViewDimensions()
-{
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    m_viewHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-    m_viewWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 }
