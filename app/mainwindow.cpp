@@ -19,6 +19,7 @@ void MainWindow::switchScene()
         switchSceneIndex = 0;
     } else {
         ++switchSceneIndex;
+        menuBar()->show();
     }
     layout->setCurrentIndex(switchSceneIndex);
 }
@@ -32,6 +33,8 @@ void MainWindow::initComponents()
     layout = new QStackedLayout;
     iScene = new IntroductionScene(*model, this);
     gScene = new GameScene(*model, this);
+    qApp->setStyle(QStyleFactory::keys().at(2));
+    initMenuBar();
 }
 
 void MainWindow::arrangement()
@@ -48,4 +51,16 @@ void MainWindow::behavior()
     connect(iScene, &IntroductionScene::gameIsInitialized, gScene, &GameScene::initBoard);
     connect(model, &QFloodIt::gameFinished, gScene, &GameScene::finalBoard);
     connect(gScene, &GameScene::newGameConfirmation, this, &MainWindow::switchScene);
+    connect(actionNewGame, &QAction::triggered, gScene, &GameScene::newGame);
+    connect(actionQuit, &QAction::triggered, qApp, &QApplication::quit);
+}
+
+void MainWindow::initMenuBar()
+{
+    QMenu* menuTaquin = menuBar()->addMenu("Flood It");
+    actionNewGame = new QAction("New Game", this);
+    actionQuit = new QAction("Quit", this);
+    menuTaquin->addAction(actionNewGame);
+    menuTaquin->addAction(actionQuit);
+    menuBar()->hide();
 }

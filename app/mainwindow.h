@@ -1,8 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QApplication>
 #include <QMainWindow>
+#include <QMenu>
+#include <QMenuBar>
 #include <QStackedLayout>
+#include <QStyleFactory>
 
 #include "gamescene.h"
 #include "introductionscene.h"
@@ -31,10 +35,16 @@ private:
 
     QStackedLayout* layout;
 
+    QAction* actionNewGame;
+
+    QAction* actionQuit;
+
     void initComponents();
 
     void arrangement();
 
     void behavior();
+
+    void initMenuBar();
 };
 #endif // MAINWINDOW_H
