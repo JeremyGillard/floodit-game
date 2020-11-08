@@ -3,6 +3,7 @@
 
 #include <QGridLayout>
 #include <QLabel>
+#include <QMessageBox>
 #include <QVBoxLayout>
 #include <QWidget>
 
@@ -14,18 +15,27 @@ class GameScene : public QWidget {
 public:
     explicit GameScene(QFloodIt& qFloodIt, QWidget* parent = nullptr);
 
+signals:
+    void newGameConfirmation();
+
 public slots:
     void initBoard();
     void updateBoard();
+    void finalBoard();
+    void newGame();
+    void registerScore();
 
 private:
     QFloodIt* model;
     QLabel* progressLbl;
     QWidget* boardWidget;
     QGridLayout* boardLayout;
+    QPushButton* newGameBtn;
+    QPushButton* registerScoreBtn;
     QVBoxLayout* mainLayout;
 
     void initComponents();
+    void clearComponents();
     void arrangement();
     void behavior();
 };

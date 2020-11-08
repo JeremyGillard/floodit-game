@@ -15,7 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::switchScene()
 {
-    if (switchSceneIndex > 1) {
+    if (switchSceneIndex) {
         switchSceneIndex = 0;
     } else {
         ++switchSceneIndex;
@@ -46,4 +46,6 @@ void MainWindow::behavior()
 {
     connect(iScene, &IntroductionScene::gameIsInitialized, this, &MainWindow::switchScene);
     connect(iScene, &IntroductionScene::gameIsInitialized, gScene, &GameScene::initBoard);
+    connect(model, &QFloodIt::gameFinished, gScene, &GameScene::finalBoard);
+    connect(gScene, &GameScene::newGameConfirmation, this, &MainWindow::switchScene);
 }

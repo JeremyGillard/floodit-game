@@ -42,7 +42,6 @@ QColor Cell::getColor()
 void Cell::changeColor(unsigned color)
 {
     this->color = color;
-    this->setText(QVariant(color).toString());
     QColor qColor = getColor();
     this->setStyleSheet(QString("background-color: %1").arg(qColor.name()));
 }

@@ -11,6 +11,9 @@ GameScene::GameScene(QFloodIt& qFloodIt, QWidget* parent)
 
 void GameScene::initBoard()
 {
+    newGameBtn->hide();
+    registerScoreBtn->hide();
+    clearComponents();
     unsigned boardHeight = model->chosenHeight();
     unsigned boardWidth = model->chosenWidth();
     for (unsigned i = 0; i < boardHeight; ++i) {
@@ -34,15 +37,52 @@ void GameScene::updateBoard()
     progressLbl->setText("Number of moves : " + QString::number(model->getNumberOfMoves()));
 }
 
+void GameScene::finalBoard()
+{
+    updateBoard();
+    newGameBtn->show();
+    registerScoreBtn->show();
+}
+
+void GameScene::newGame()
+{
+    if (!model->isOver()) {
+        int response = QMessageBox::question(this, "New game confirm?",
+            "Are you sure you want to start a new game without having finished the current one?",
+            QMessageBox ::Yes | QMessageBox::No);
+        if (response == QMessageBox::Yes) {
+            emit newGameConfirmation();
+        }
+    } else {
+        emit newGameConfirmation();
+    }
+}
+
+void GameScene::registerScore()
+{
+}
+
 void GameScene::initComponents()
 {
     boardLayout = new QGridLayout;
     boardLayout->setSpacing(0);
-    boardWidget = new QWidget;
+    boardWidget = new QWidget(this);
     mainLayout = new QVBoxLayout;
     mainLayout->setAlignment(Qt::AlignCenter);
     progressLbl = new QLabel("Number of moves : 0");
     progressLbl->setAlignment(Qt::AlignCenter);
+    newGameBtn = new QPushButton("New Game", this);
+    registerScoreBtn = new QPushButton("Register Score", this);
+}
+
+void GameScene::clearComponents()
+{
+    progressLbl->setText("Number of moves : 0");
+    QLayoutItem* child;
+    while ((child = boardLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
 }
 
 void GameScene::arrangement()
@@ -52,10 +92,13 @@ void GameScene::arrangement()
     boardWidget->setObjectName("board");
     mainLayout->addWidget(boardWidget);
     mainLayout->addWidget(progressLbl);
+    mainLayout->addWidget(newGameBtn);
+    mainLayout->addWidget(registerScoreBtn);
     mainLayout->setSpacing(15);
 }
 
 void GameScene::behavior()
 {
     connect(model, &QFloodIt::boardChanged, this, &GameScene::updateBoard);
+    connect(newGameBtn, &QPushButton::clicked, this, &GameScene::newGame);
 }
