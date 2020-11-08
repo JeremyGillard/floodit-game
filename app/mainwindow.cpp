@@ -31,7 +31,7 @@ void MainWindow::initComponents()
     centralWidget = new QWidget(this);
     layout = new QStackedLayout;
     iScene = new IntroductionScene(*model, this);
-    gScene = new GameScene(this);
+    gScene = new GameScene(*model, this);
 }
 
 void MainWindow::arrangement()
