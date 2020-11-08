@@ -1,8 +1,8 @@
 #include "cell.h"
 
+#include <QDebug>
+
 int BOARD_SIZE = 400;
-//const int FONT_SIZE = 24;
-//const QString FONT_FAMILLY = "Tahoma";
 
 Cell::Cell(const QString& text, unsigned i, unsigned j, QFloodIt& qFloodIt, QWidget* parent)
     : QPushButton(text, parent)
@@ -17,7 +17,9 @@ Cell::Cell(const QString& text, unsigned i, unsigned j, QFloodIt& qFloodIt, QWid
 void Cell::arrangement()
 {
     QPushButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    setMinimumSize(BOARD_SIZE / model->chosenWidth(), BOARD_SIZE / model->chosenHeight());
+    unsigned largestSize = model->chosenHeight() < model->chosenWidth() ? model->chosenWidth() : model->chosenHeight();
+    setMinimumSize(BOARD_SIZE / largestSize, BOARD_SIZE / largestSize);
+    setMaximumSize(BOARD_SIZE / largestSize, BOARD_SIZE / largestSize);
 }
 
 void Cell::behavior()

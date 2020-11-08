@@ -45,4 +45,5 @@ void MainWindow::arrangement()
 void MainWindow::behavior()
 {
     connect(iScene, &IntroductionScene::gameIsInitialized, this, &MainWindow::switchScene);
+    connect(iScene, &IntroductionScene::gameIsInitialized, gScene, &GameScene::initBoard);
 }

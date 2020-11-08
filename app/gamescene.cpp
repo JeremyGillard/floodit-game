@@ -15,8 +15,8 @@ void GameScene::initBoard()
     unsigned boardWidth = model->chosenWidth();
     for (unsigned i = 0; i < boardHeight; ++i) {
         for (unsigned j = 0; j < boardWidth; ++j) {
-            int cellNumber = static_cast<int>(model->getColorAt(i, j));
-            boardLayout->addWidget(new Cell(QString::number(cellNumber), i, j, *model, boardWidget));
+            unsigned cellColor = model->getColorAt(i, j);
+            boardLayout->addWidget(new Cell(QString::number(cellColor), i, j, *model, boardWidget), i, j);
         }
     }
 }
