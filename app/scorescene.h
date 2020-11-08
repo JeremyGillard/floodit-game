@@ -2,6 +2,7 @@
 #define SCORESCENE_H
 
 #include <QHeaderView>
+#include <QLabel>
 #include <QPushButton>
 #include <QStringListModel>
 #include <QTableView>
@@ -24,6 +25,8 @@ public slots:
 
 private:
     QFloodIt* model;
+
+    QLabel* sceneTitle;
 
     QTableWidget* table;
 
