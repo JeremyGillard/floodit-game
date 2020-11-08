@@ -3,14 +3,17 @@
 
 #include <QObject>
 
-class QFloodIt : public QObject
-{
+#include "floodit.h"
+
+class QFloodIt : public QObject, public FloodIt {
     Q_OBJECT
 public:
-    explicit QFloodIt(QObject *parent = nullptr);
+    explicit QFloodIt(QObject* parent = nullptr);
+    void pickColor(unsigned color);
 
 signals:
-
+    void boardChanged();
+    void gameFinished();
 };
 
 #endif // QFLOODIT_H
