@@ -13,6 +13,12 @@ class IntroductionScene : public QWidget {
 public:
     explicit IntroductionScene(QWidget* parent = nullptr);
 
+signals:
+    void gameIsInitialized();
+
+public slots:
+    void initGame();
+
 private:
     QLabel* title;
     QLabel* boardHeightLbl;

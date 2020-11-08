@@ -8,6 +8,13 @@ IntroductionScene::IntroductionScene(QWidget* parent)
     behavior();
 }
 
+void IntroductionScene::initGame()
+{
+    //    taquin->initBoard(static_cast<unsigned>(initSizeBoardCbb->currentData().toInt()));
+    //    taquin->start(static_cast<unsigned>(initDifficultyCbb->currentData().toInt()));
+    emit gameIsInitialized();
+}
+
 void IntroductionScene::initComponents()
 {
     title = new QLabel("Flood It");
@@ -52,4 +59,5 @@ void IntroductionScene::arrangement()
 
 void IntroductionScene::behavior()
 {
+    connect(startBtn, &QPushButton::clicked, this, &IntroductionScene::initGame);
 }
