@@ -8,10 +8,12 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "qfloodit.h"
+
 class IntroductionScene : public QWidget {
     Q_OBJECT
 public:
-    explicit IntroductionScene(QWidget* parent = nullptr);
+    explicit IntroductionScene(QFloodIt& qFloodIt, QWidget* parent = nullptr);
 
 signals:
     void gameIsInitialized();
@@ -20,6 +22,8 @@ public slots:
     void initGame();
 
 private:
+    QFloodIt* model;
+
     QLabel* title;
     QLabel* boardHeightLbl;
     QComboBox* boardHeightCbb;

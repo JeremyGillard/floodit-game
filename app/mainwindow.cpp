@@ -27,9 +27,10 @@ void MainWindow::initComponents()
 {
     setWindowTitle("Flood It");
     setFixedSize(500, 600);
+    model = new QFloodIt(this);
     centralWidget = new QWidget(this);
     layout = new QStackedLayout;
-    iScene = new IntroductionScene(this);
+    iScene = new IntroductionScene(*model, this);
     gScene = new GameScene(this);
 }
 
@@ -43,4 +44,5 @@ void MainWindow::arrangement()
 
 void MainWindow::behavior()
 {
+    connect(iScene, &IntroductionScene::gameIsInitialized, this, &MainWindow::switchScene);
 }

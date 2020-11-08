@@ -6,6 +6,7 @@
 
 #include "gamescene.h"
 #include "introductionscene.h"
+#include "qfloodit.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -18,6 +19,8 @@ public slots:
     void switchScene();
 
 private:
+    QFloodIt* model;
+
     QWidget* centralWidget;
 
     IntroductionScene* iScene;

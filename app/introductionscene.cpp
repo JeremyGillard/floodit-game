@@ -1,7 +1,8 @@
 #include "introductionscene.h"
 
-IntroductionScene::IntroductionScene(QWidget* parent)
+IntroductionScene::IntroductionScene(QFloodIt& qFloodIt, QWidget* parent)
     : QWidget(parent)
+    , model(&qFloodIt)
 {
     initComponents();
     arrangement();
@@ -10,28 +11,28 @@ IntroductionScene::IntroductionScene(QWidget* parent)
 
 void IntroductionScene::initGame()
 {
-    //    taquin->initBoard(static_cast<unsigned>(initSizeBoardCbb->currentData().toInt()));
-    //    taquin->start(static_cast<unsigned>(initDifficultyCbb->currentData().toInt()));
+    model->initBoard(boardHeightCbb->currentData().toUInt(), boardWidthCbb->currentData().toUInt());
+    model->setDifficulty(difficultyCbb->currentData().toUInt());
     emit gameIsInitialized();
 }
 
 void IntroductionScene::initComponents()
 {
-    title = new QLabel("Flood It");
-    boardHeightLbl = new QLabel("Board height");
-    boardHeightCbb = new QComboBox;
-    boardWidthLbl = new QLabel("Board width");
-    boardWidthCbb = new QComboBox;
+    title = new QLabel("Flood It", this);
+    boardHeightLbl = new QLabel("Board height", this);
+    boardHeightCbb = new QComboBox(this);
+    boardWidthLbl = new QLabel("Board width", this);
+    boardWidthCbb = new QComboBox(this);
     for (unsigned i = 5; i < 21; ++i) {
         boardHeightCbb->addItem(QString::number(i), i);
         boardWidthCbb->addItem(QString::number(i), i);
     }
-    difficultyLbl = new QLabel("Number of color");
-    difficultyCbb = new QComboBox;
+    difficultyLbl = new QLabel("Number of color", this);
+    difficultyCbb = new QComboBox(this);
     for (unsigned i = 3; i < 9; ++i) {
         difficultyCbb->addItem(QString::number(i), i);
     }
-    startBtn = new QPushButton("Start");
+    startBtn = new QPushButton("Start", this);
     userInformationLayout = new QGridLayout;
     mainLayout = new QVBoxLayout;
 }
