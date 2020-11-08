@@ -16,13 +16,22 @@ void GameScene::initBoard()
     for (unsigned i = 0; i < boardHeight; ++i) {
         for (unsigned j = 0; j < boardWidth; ++j) {
             unsigned cellColor = model->getColorAt(i, j);
-            boardLayout->addWidget(new Cell(QString::number(cellColor), i, j, *model, boardWidget), i, j);
+            boardLayout->addWidget(new Cell(cellColor, *model, boardWidget), i, j);
         }
     }
 }
 
 void GameScene::updateBoard()
 {
+    unsigned boardHeight = model->chosenHeight();
+    unsigned boardWidth = model->chosenWidth();
+    for (unsigned i = 0; i < boardHeight; ++i) {
+        for (unsigned j = 0; j < boardWidth; ++j) {
+            Cell* cell = qobject_cast<Cell*>(boardLayout->itemAtPosition(i, j)->widget());
+            cell->changeColor(model->getColorAt(i, j));
+        }
+    }
+    progressLbl->setText("Number of moves : " + QString::number(model->getNumberOfMoves()));
 }
 
 void GameScene::initComponents()
@@ -48,4 +57,5 @@ void GameScene::arrangement()
 
 void GameScene::behavior()
 {
+    connect(model, &QFloodIt::boardChanged, this, &GameScene::updateBoard);
 }

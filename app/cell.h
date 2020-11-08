@@ -10,18 +10,19 @@
 class Cell : public QPushButton {
     Q_OBJECT
 public:
-    explicit Cell(const QString& text, unsigned i, unsigned j, QFloodIt& qFloodIt, QWidget* parent = nullptr);
+    explicit Cell(unsigned color, QFloodIt& qFloodIt, QWidget* parent = nullptr);
+    void changeColor(unsigned color);
 
 private:
     QFloodIt* model;
 
-    unsigned i;
-
-    unsigned j;
+    unsigned color;
 
     void arrangement();
 
     void behavior();
+
+    QColor getColor();
 };
 
 #endif // CELL_H
