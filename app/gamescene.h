@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "cell.h"
 #include "qfloodit.h"
 
 class GameScene : public QWidget {

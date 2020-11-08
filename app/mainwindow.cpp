@@ -15,12 +15,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::switchScene()
 {
-    layout->setCurrentIndex(switchSceneIndex);
     if (switchSceneIndex > 1) {
         switchSceneIndex = 0;
     } else {
         ++switchSceneIndex;
     }
+    layout->setCurrentIndex(switchSceneIndex);
 }
 
 void MainWindow::initComponents()
