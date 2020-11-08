@@ -60,6 +60,18 @@ void GameScene::newGame()
 
 void GameScene::registerScore()
 {
+    if (!model->isOver()) {
+        QMessageBox msgBox;
+        msgBox.setText("You must have finished the party to be able to register");
+        msgBox.exec();
+    } else {
+        bool ok;
+        QString text = QInputDialog::getText(this, "Pseudo", "Please enter your pseudo:", QLineEdit::Normal, QDir::home().dirName(), &ok);
+        if (ok && !text.isEmpty()) {
+            model->newScore(text.toUtf8().constData());
+            emit registerScoreConfirmation();
+        }
+    }
 }
 
 void GameScene::initComponents()
@@ -101,4 +113,5 @@ void GameScene::behavior()
 {
     connect(model, &QFloodIt::boardChanged, this, &GameScene::updateBoard);
     connect(newGameBtn, &QPushButton::clicked, this, &GameScene::newGame);
+    connect(registerScoreBtn, &QPushButton::clicked, this, &GameScene::registerScore);
 }

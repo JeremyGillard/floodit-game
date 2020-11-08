@@ -14,14 +14,16 @@ SOURCES += \
     introductionscene.cpp \
     main.cpp \
     mainwindow.cpp \
-    qfloodit.cpp
+    qfloodit.cpp \
+    scorescene.cpp
 
 HEADERS += \
     cell.h \
     gamescene.h \
     introductionscene.h \
     mainwindow.h \
-    qfloodit.h
+    qfloodit.h \
+    scorescene.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

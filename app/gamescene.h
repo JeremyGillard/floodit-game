@@ -1,8 +1,11 @@
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
 
+#include <QDir>
 #include <QGridLayout>
+#include <QInputDialog>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -17,6 +20,7 @@ public:
 
 signals:
     void newGameConfirmation();
+    void registerScoreConfirmation();
 
 public slots:
     void initBoard();
