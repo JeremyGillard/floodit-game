@@ -79,5 +79,9 @@ std::map<unsigned, std::string> FloodIt::getScores() const
 
 unsigned FloodIt::getPlayersRanking(const std::string& name) const
 {
-    return m_records->getPlayersRanking(name);
+    if (!isOver()) {
+        throw std::logic_error("The player must have finished the game in order to get his ranking.");
+    } else {
+        return m_records->getPlayersRanking(name);
+    }
 }
