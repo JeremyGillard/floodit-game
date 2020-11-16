@@ -11,7 +11,7 @@ void Controller::startGame()
     unsigned boardWidth { 0 };
     unsigned boardHeight { 0 };
     m_view.welcomeMessage();
-    if (m_view.squareOrRectangularBoardQuestion()) {
+    if (m_view.rectangularBoardQuestion()) {
         boardHeight = m_view.sizeBoardQuestion("height");
     }
     boardWidth = m_view.sizeBoardQuestion("width");

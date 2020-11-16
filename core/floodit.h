@@ -10,6 +10,8 @@
 
 /**
  * @brief The FloodIt class represents the model of this game.
+ * This class inherits a Subject (Observable) class allowing
+ * to put into practice the Observer/Observable design model.
  */
 class FloodIt : public nvs::Subject {
 public:

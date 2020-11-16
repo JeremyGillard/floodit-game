@@ -18,7 +18,7 @@ void View::welcomeMessage()
     std::cout << std::setw(25) << "[Press Enter to launch]" << std::endl;
 }
 
-bool View::squareOrRectangularBoardQuestion()
+bool View::rectangularBoardQuestion()
 {
     std::cin.ignore();
     std::cout << "Do you want to play on a rectangular board ? (y/n) : ";
