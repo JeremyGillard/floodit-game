@@ -2,6 +2,14 @@
 
 <img src="./app/resources/img/synopsis.jpg">
 
+### Table of content
+
+[Description](#description)  
+[Project Structure](#project-structure)  
+[Technologies](#technologies)  
+[Setup](#setup)  
+[Licensing](#licensing)  
+
 ## Description
 
 Flood-It is a game where colored pellets are placed on a rectangular board formed by rows of c columns of locations. Let l x c pads, because no place is left empty.  
@@ -20,6 +28,13 @@ one zone is adjacent to a pellet in the other.
 During the game, a zone has a special status, the captured pellet zone, or captured zone. Initially, the captured area contains a pellet located in a corner of the game board. When the board is displayed on a vertical screen, it is usual to take this pellet in its upper left corner. 
 
 The game is divided into rounds. At the beginning of each round, the player always performs the same action: he selects one of the k colors, in order to extend the captured area. Let ki be the selected color. After selecting ki, the captured area takes this color. Since an area is by definition maximum, the ki-colored areas adjacent to the captured area merge with the latter, which ideally causes its extension.  This is followed by a new turn, or the end of the game if the captured area covers the entire board.
+
+## Project Structure  
+
+The project is divided into three main parts:
+- **Core** which represents the model of the game in the form of a qt library written in standard C++ 17.
+- **Console** to launch the game in console mode.
+- **App** allowing to launch the game in graphic mode.
 
 ## Technologies
 
