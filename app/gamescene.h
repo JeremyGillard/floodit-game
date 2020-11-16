@@ -13,13 +13,32 @@
 #include "cell.h"
 #include "qfloodit.h"
 
+/**
+ * @brief The GameScene class allows to display the game board and play with it.
+ */
 class GameScene : public QWidget {
     Q_OBJECT
 public:
+    /**
+     * @brief GameScene allows to create a game scene that allows the player
+     * to play with the game FloodIt.
+     *
+     * @param qFloodIt the floodit that will be represented.
+     * @param parent parent who will be in charge of its destruction.
+     */
     explicit GameScene(QFloodIt& qFloodIt, QWidget* parent = nullptr);
 
 signals:
+    /**
+     * @brief newGameConfirmation signal when a player decides to start
+     * a new game without having finished the previous one.
+     */
     void newGameConfirmation();
+
+    /**
+     * @brief registerScoreConfirmation allows to display the final score scene
+     * after a user score registration.
+     */
     void registerScoreConfirmation();
 
 public slots:
