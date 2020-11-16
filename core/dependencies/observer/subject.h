@@ -9,32 +9,6 @@
 #include <set>
 
 /*!
- * \mainpage Modèle de conception Observateur
- *
- * L'implémentation du _desing pattern_
- * [Observer](https://en.wikipedia.org/wiki/Observer_pattern)
- * donnée ici est fidèle au modèle du
- * [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns). En
- * particulier, il n'y est pas fait usage d'une classe correspondant
- * aux _événements_, mais uniquement d'une classe
- * _source d'événements_, le sujet nvs::Subject, et d'une classe
- * _écouteur d'événements_, l'observateur nvs::Observer.
- *
- * Dans ses mises en œuvre effective, ce modèle est très souvent
- * étoffé par l'ajout de classes d'événement ou par la multiplication
- * des méthodes de notification.
- * Rien, cependant, de ce que ces complexifications du modèle
- * rendent plus facile aux utilisateurs, n'est hors de portée du
- * modèle simple donné ici. Les développements du modèle de conception
- * peuvent en effet être reportées sur les classes concrètes qui
- * l'implémentent. Remarquez que si le contenu de ce paragraphe
- * vous semble abscons, oubliez-le provisoirement. On en reparle
- * lors de la
- * [gestion des événements avec Qt](https://doc.qt.io/qt-5/eventsandfilters.html).
- *
- */
-
-/*!
  * \brief Espace de nom de Nicolas Vansteenkiste.
  */
 namespace nvs

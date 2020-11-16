@@ -13,6 +13,12 @@
 #include "qfloodit.h"
 #include "scorescene.h"
 
+/*!
+ * \mainpage Flood It - Console
+ *
+ * This is the documentation concerning the game gui part.
+ */
+
 /**
  * @brief The MainWindow class is the main window of the game.
  */
