@@ -19,6 +19,7 @@ void IntroductionScene::initGame()
 void IntroductionScene::initComponents()
 {
     title = new QLabel("Flood It", this);
+    title->setObjectName("title");
     boardHeightLbl = new QLabel("Board height", this);
     boardHeightCbb = new QComboBox(this);
     boardWidthLbl = new QLabel("Board width", this);
@@ -33,6 +34,7 @@ void IntroductionScene::initComponents()
         difficultyCbb->addItem(QString::number(i), i);
     }
     startBtn = new QPushButton("Start", this);
+    startBtn->setProperty("evilButton", true);
     userInformationLayout = new QGridLayout;
     mainLayout = new QVBoxLayout;
 }

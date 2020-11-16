@@ -35,13 +35,19 @@ void MainWindow::initComponents()
 {
     setWindowTitle("Flood It");
     setFixedSize(500, 600);
+    setWindowIcon(QIcon(":/img/logo"));
     model = new QFloodIt(this);
     centralWidget = new QWidget(this);
+    centralWidget->setObjectName("mainWindow");
     layout = new QStackedLayout;
     iScene = new IntroductionScene(*model, this);
     gScene = new GameScene(*model, this);
     sScene = new ScoreScene(*model, this);
+    QFile styleFile(":/stylesheets/style");
+    styleFile.open(QFile::ReadOnly);
+    QString style(styleFile.readAll());
     qApp->setStyle(QStyleFactory::keys().at(2));
+    qApp->setStyleSheet(style);
     initMenuBar();
 }
 

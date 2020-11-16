@@ -101,7 +101,6 @@ void GameScene::arrangement()
 {
     setLayout(mainLayout);
     boardWidget->setLayout(boardLayout);
-    boardWidget->setObjectName("board");
     mainLayout->addWidget(boardWidget);
     mainLayout->addWidget(progressLbl);
     mainLayout->addWidget(newGameBtn);
