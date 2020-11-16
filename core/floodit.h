@@ -49,7 +49,8 @@ public:
     /**
      * @brief pickColor allows you to pick a certain color to play.
      * (The colors are represented by numbers for the sake of simplicity of the
-     * code).
+     * code). If the color picked is not identical to the current flood zone color
+     * then the number of moves will be increment.
      *
      * @param color the color to pick.
      */
