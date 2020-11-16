@@ -14,6 +14,10 @@ QLabel#title {
     font: 75px normal "Tahoma";
 }
 
+QLabel#scoretitle {
+    font: 20px normal "Tahoma";
+}
+
 QLabel {
     font: 16px normal "Tahoma";
 }

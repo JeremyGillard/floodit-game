@@ -12,6 +12,7 @@ ScoreScene::ScoreScene(QFloodIt& qFloodIt, QWidget* parent)
 void ScoreScene::initComponents()
 {
     sceneTitle = new QLabel(this);
+    sceneTitle->setObjectName("scoretitle");
     table = new QTableWidget(this);
     newGameBtn = new QPushButton("New Game", this);
     mainLayout = new QVBoxLayout;
@@ -20,10 +21,10 @@ void ScoreScene::initComponents()
 void ScoreScene::populateData()
 {
 
-    QString title = "Score (Height: %1, Width: %2, Difficulty: %3)";
-    auto r = title.arg(QVariant(model->chosenHeight()).toString(),
-        QVariant(model->chosenWidth()).toString(),
-        QVariant(model->chosenDifficulty()).toString());
+    QString title = QString("Score - Height: %1, Width: %2, Difficulty: %3")
+                        .arg(QVariant(model->chosenHeight()).toString(),
+                            QVariant(model->chosenWidth()).toString(),
+                            QVariant(model->chosenDifficulty()).toString());
     sceneTitle->setText(title);
     // Tableau
     table->setRowCount(0);
