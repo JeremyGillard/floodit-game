@@ -4,11 +4,11 @@
 
 ## Table of content
 
-### [Description](#description)  
-### [Project Structure](#project-structure)  
-### [Technologies](#technologies)  
-### [Setup](#setup)  
-### [Licensing](#licensing)  
+***[Description](#description)***  
+***[Project Structure](#project-structure)***  
+***[Technologies](#technologies)***  
+***[Setup](#setup)***  
+***[Licensing](#licensing)***  
 
 ## Description
 
