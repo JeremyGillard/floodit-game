@@ -1,5 +1,8 @@
 # Flood It <img src="./app/resources/img/logo.jpg" width="20" height="20">
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![ProjectType](https://img.shields.io/badge/ProjectType-School-blue)
+
 <img src="./app/resources/img/synopsis.jpg">
 
 ## Table of content
@@ -57,13 +60,3 @@ The project is divided into three main parts:
 3. Open the file Taquin.pro with Qt Creator
 4. [Important] In Qt Creator, Right click on "core" folder -> Compile "Core"
 5. In Qt Creator, Right click on "app" or "console" folder -> Execute
-
-## Licensing
-
-With confirmation from my laboratory supervisor I would like to post this project on my personal github with the license below (to be confirmed).
-
-**Question: Can a real game under private license be licensed to copy-left in the "digital world"?**
-
-This app is Licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for the full license text.
-
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
