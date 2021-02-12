@@ -41,7 +41,7 @@ The project is divided into three main parts:
 
 ## Technologies
 
-**Language**
+**Langage**
 
 - C++ version: 17
 
